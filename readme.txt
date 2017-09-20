@@ -1,13 +1,13 @@
-DescriÁ„o do Projeto
+Descri√ß√£o do Projeto
 
 Sistema Provedor 
 
-O sistema provedor tem como obejtivo facilitar a organizaÁ„o de um provedor de internet e controlar a entrada e saida de seus clientes,
-no qual,o sistema cadastra os dados do cliente, tais como: nome, telefone, endereÁo e a quantidade de megas que o cliente solicitou,
-daÌ o software calcula quanto o cliete dever· pagar pela quantidade de megas contratado,o mesmo cadastra novos clientes, salvando-os
-em seu banco de dados,podendo assim, pesquisar os dados dos clientes cadastrados e alterar caso necess·rio, o sistema tambÈm poder· 
-deletar 
-Para que o sistema execute,o facilitador da empresa dever· informar(cadastrar) os dados do cliente (nome,telefone,
-endereÁo e quantidade de megas desejado), fazendo este cadastro, o sistema j· calcula altomaticamente quanto o cliente 
-dever· pagar pelo serviÁo e se caso o cliente n„o queira mais os serviÁos, atravÈs do sistema o facilitador poder· deletar o 
-cliente cadastrado.  
+O sistema provedor tem como obejtivo facilitar a organiza√ß√£o de um provedor de internet e controlar a entrada e saida de seus clientes,
+no qual,o sistema cadastra os dados do cliente, tais como: nome, telefone, endere√ßo e a quantidade de megas que o cliente solicitou,
+da√≠ o software calcula quanto o cliete dever√° pagar pela quantidade de megas contratado,o mesmo cadastra novos clientes, salvando-os
+em seu banco de dados,podendo assim, pesquisar os dados dos clientes cadastrados e alterar caso necess√°rio, o sistema tamb√©m poder√° 
+deletar o cliente cadastrado, caso ele n√£o queira mais os servi√ßos da empresa, assim, o dono da empresa ter√° um controle de entrada e sa√≠da de seus clientes. 
+Para que o sistema execute,o facilitador da empresa dever√° informar(cadastrar) os dados do cliente (nome,telefone,
+endere√ßo e quantidade de megas desejado), fazendo este cadastro, o sistema j√° calcula altomaticamente quanto o cliente 
+dever√° pagar pelo servi√ßo e caso o cliente n√£o queira mais os servi√ßos, atrav√©s do sistema o facilitador poder√° deletar o 
+cliente cadastrado, tendo assim total controle de entra e sa√≠da dos clientes da empresa.  
