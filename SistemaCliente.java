@@ -1,20 +1,36 @@
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class SistemaCliente {
-	private ArrayList<Clientes> clientes;
+public class SistemaCliente implements SistemaAtendeCliente {
+	private List<Clientes> clientes;
+	private int plano;
+	
+	
+	public SistemaCliente(){
+		clientes = new ArrayList();
+		this.plano = plano;
+	}
 
-	public void cadastraCliente(String nome, String endereço, int quantMega,
+	public void cadastraCliente(String nome, String endereÃ§o, String cpf,
 			String tel) {
 		for (Clientes c : this.clientes) {
-			if (c.getNome().equals(nome)){
-				return ;
+			if (c.getNome().equals(nome)) {
+				return;
 			}
 		}
-		Clientes cliente = new Clientes(nome, endereço, quantMega, tel);
+		Clientes cliente = new Clientes(nome, endereÃ§o, cpf, tel);
 
 		this.clientes.add(cliente);
 
 	}
+	
+	public int calculaPlano(int plano) {
+		int valor = 20;
+		int valorTotal = valor * plano;
+		return valorTotal;
+	}
+
 
 	public Clientes pesquisaCliente(String nome) {
 		for (Clientes c : this.clientes) {
@@ -25,10 +41,18 @@ public class SistemaCliente {
 		return null;
 
 	}
+	
+	public void removeCliente(String nome){
+		for(Clientes c : this.clientes){
+			if(c.getNome().equals(nome)){
+			 this.clientes.remove(c);
+			}
+		}
+	}
 
-	public int calculaQuantMega( int quantMega) {
-		int valor = 20;
-		int valorTotal = valor * quantMega;
-		return valorTotal;
+	
+	@Override
+	public List<Clientes> getCliente() {
+		return this.clientes;
 	}
 }
