@@ -16,10 +16,10 @@ public class ProgramaSpeed {
 				switch (menu){
 				case "1":
 					String nome = JOptionPane.showInputDialog("nome do cliente:");
-					String endereÁo = JOptionPane.showInputDialog("endereÁo do cliente:");
+					String endere√ßo = JOptionPane.showInputDialog("endere√ßo do cliente:");
 					String cpf = JOptionPane.showInputDialog("Cpf do cliente:");
 					String tel = JOptionPane.showInputDialog("contato do cliente:");
-					sistema.cadastraCliente(nome, endereÁo, cpf, tel);
+					sistema.cadastraCliente(nome, endere√ßo, cpf, tel);
 				
 					break;
 				
@@ -27,7 +27,7 @@ public class ProgramaSpeed {
 				
 				case "2":
 					String nomeAPesquisar = JOptionPane.showInputDialog("Digite o nome do cliente a ser encontrado");
-					System.out.println(sistema.pesquisaCliente(nomeAPesquisar));
+					JOptionPane.showMessageDialog(null,sistema.pesquisaCliente(nomeAPesquisar));
 					break;
 					
 					
@@ -37,14 +37,18 @@ public class ProgramaSpeed {
 					break;
 					
 					
+					
+					
 				case"4":
 					int plano = Integer.parseInt(JOptionPane
-							.showInputDialog("qual a sua velocidade desejada:"));
-					System.out.println("R$ "+sistema.calculaPlano(plano)+",00");
+							.showInputDialog("Op√ß√£o de velocidade:\n1 Mbps\n3 Mbpss\n5 Mbps"));
+					
+					
+					JOptionPane.showMessageDialog(null,"R$ "+sistema.calculaPlano(plano)+",00");
 					break;
 				case"5":
 					List<Clientes> clientesCadastrado = sistema.getCliente();
-					System.out.println(clientesCadastrado);
+					JOptionPane.showMessageDialog(null,      clientesCadastrado);
 					break;
 					
 				case"6":
