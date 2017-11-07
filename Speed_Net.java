@@ -27,6 +27,10 @@ public class Speed_Net extends JFrame {
 	private JTextField entradaCpf;
 	private JTextField nomePesquisa;
 	private JTextField nomeRemove;
+	private JTextField nomeagenda;
+	private JTextField enderecoagenda;
+	private JTextField ncasa;
+	private JTextField datestalacao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -78,14 +82,14 @@ public class Speed_Net extends JFrame {
 				telaPesquisa.setVisible(true);
 			}
 		});
-		btnPesquisarCliente.setBounds(10, 80, 162, 23);
+		btnPesquisarCliente.setBounds(10, 45, 162, 23);
 		telaIncial.add(btnPesquisarCliente);
 		
 		JPanel telaRemove = new JPanel();
 		telaPrincipal.add(telaRemove, "name_6547863955449");
 		telaRemove.setLayout(null);
 		
-		JButton btnRemoveCliente = new JButton("Remove cliente");
+		JButton btnRemoveCliente = new JButton("Remove cliente cadastrado");
 		btnRemoveCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				telaIncial.setVisible(false);
@@ -93,7 +97,7 @@ public class Speed_Net extends JFrame {
 			
 			}
 		});
-		btnRemoveCliente.setBounds(10, 145, 121, 23);
+		btnRemoveCliente.setBounds(10, 79, 162, 23);
 		telaIncial.add(btnRemoveCliente);
 		
 		JPanel telaValores = new JPanel();
@@ -115,7 +119,7 @@ public class Speed_Net extends JFrame {
 		telaListar.setLayout(null);
 		
 		JList listaClientes = new JList();
-		listaClientes.setBounds(10, 11, 404, 165);
+		listaClientes.setBounds(0, 11, 542, 196);
 		telaListar.add(listaClientes);
 		
 		JButton btnListarCliente = new JButton("Listar Cliente");
@@ -132,7 +136,7 @@ public class Speed_Net extends JFrame {
 				telaListar.setVisible(true);
 			}
 		});
-		btnListarCliente.setBounds(253, 80, 129, 23);
+		btnListarCliente.setBounds(244, 45, 138, 23);
 		telaIncial.add(btnListarCliente);
 		
 		JButton btnSair = new JButton("Sair");
@@ -147,12 +151,115 @@ public class Speed_Net extends JFrame {
 				}System.exit(0);
 			}
 		});
-		btnSair.setBounds(253, 145, 129, 23);
+		btnSair.setBounds(244, 145, 138, 23);
 		telaIncial.add(btnSair);
 		
 		JLabel lblSpeedNet = new JLabel("Speed net");
 		lblSpeedNet.setBounds(159, 211, 69, 14);
 		telaIncial.add(lblSpeedNet);
+		
+		JPanel telaAgendamento = new JPanel();
+		telaPrincipal.add(telaAgendamento, "name_685925637577138");
+		telaAgendamento.setLayout(null);
+		
+		JButton btnAgendarCliente = new JButton("Agendar Cliente");
+		btnAgendarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				telaIncial.setVisible(false);
+				telaAgendamento.setVisible(true);
+			}
+		});
+		btnAgendarCliente.setBounds(10, 113, 162, 23);
+		telaIncial.add(btnAgendarCliente);
+		
+		JPanel telaMostraAgendamento = new JPanel();
+		telaPrincipal.add(telaMostraAgendamento, "name_686607025349706");
+		telaMostraAgendamento.setLayout(null);
+		
+
+		JList listagenda = new JList();
+		listagenda.setBounds(10, 24, 445, 194);
+		telaMostraAgendamento.add(listagenda);
+		
+		JButton btnVoltar_5 = new JButton("Voltar");
+		btnVoltar_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaMostraAgendamento.setVisible(false);
+				telaIncial.setVisible(true);
+			}
+		});
+		btnVoltar_5.setBounds(325, 217, 89, 23);
+		telaMostraAgendamento.add(btnVoltar_5);
+		
+		JLabel lblClientesAgendados = new JLabel("Clientes Agendados:");
+		lblClientesAgendados.setBounds(10, 0, 156, 14);
+		telaMostraAgendamento.add(lblClientesAgendados);
+		
+		JButton btnClienteAgendado = new JButton("Cliente agendado");
+		btnClienteAgendado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Agendamento> agendamentos = sistema.getAgendamento();
+				String[] listaagenda = new String[agendamentos.size()];
+				for(int i = 0; i<agendamentos.size(); i++){
+					listaagenda[i] = "Nome: "+agendamentos.get(i).getNome()+" Endereço: "+agendamentos.get(i).getEndereço()+
+							" Numero da Casa: "+ agendamentos.get(i).getNumCasa()+" Data da instalação: "
+							+agendamentos.get(i).getDataInstalacao();					
+				}listagenda.setModel(new javax.swing.DefaultComboBoxModel(listaagenda));
+				telaIncial.setVisible(false);
+				telaMostraAgendamento.setVisible(true);
+				
+			}
+		});
+		btnClienteAgendado.setBounds(244, 79, 138, 23);
+		telaIncial.add(btnClienteAgendado);
+		
+		JPanel telaRemover = new JPanel();
+		telaPrincipal.add(telaRemover, "name_692857939397101");
+		telaRemover.setLayout(null);
+		
+		JLabel lblEscolhaOUsuario = new JLabel("Escolha o usuario");
+		lblEscolhaOUsuario.setBounds(10, 11, 136, 14);
+		telaRemover.add(lblEscolhaOUsuario);
+		
+		JComboBox usuariocombo = new JComboBox();
+		usuariocombo.setBounds(10, 31, 203, 20);
+		telaRemover.add(usuariocombo);
+		
+		JButton btnRemover_1 = new JButton("Remover");
+		btnRemover_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sistema.removeAgendamento(sistema.getAgendamento().get(usuariocombo.getSelectedIndex()).getNome());
+				telaRemover.setVisible(false);
+				telaIncial.setVisible(true);
+			}
+		});
+		btnRemover_1.setBounds(314, 217, 89, 23);
+		telaRemover.add(btnRemover_1);
+		
+		JButton btnVoltar_6 = new JButton("Voltar");
+		btnVoltar_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaRemover.setVisible(false);
+				telaIncial.setVisible(true);
+			}
+		});
+		btnVoltar_6.setBounds(215, 217, 89, 23);
+		telaRemover.add(btnVoltar_6);
+		
+		JButton btnRemoveClienteInstalado = new JButton("Remove cliente instalado");
+		btnRemoveClienteInstalado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] nomes = new String[sistema.getAgendamento().size()];
+				for(int i=0; i<sistema.getAgendamento().size(); i++){
+					nomes[i] = sistema.getAgendamento().get(i).getNome();
+					
+				}usuariocombo.setModel(new javax.swing.DefaultComboBoxModel(nomes));
+				telaIncial.setVisible(false);
+				telaRemover.setVisible(true);
+			}
+		});
+		btnRemoveClienteInstalado.setBounds(10, 147, 162, 23);
+		telaIncial.add(btnRemoveClienteInstalado);
 		
 		
 		
@@ -346,6 +453,77 @@ public class Speed_Net extends JFrame {
 		telaListar.add(btnVoltar_3);
 		
 		
+		JLabel lblNome_3 = new JLabel("Nome");
+		lblNome_3.setBounds(10, 11, 46, 14);
+		telaAgendamento.add(lblNome_3);
+		
+
+		
+		nomeagenda = new JTextField();
+		nomeagenda.setBounds(10, 26, 321, 20);
+		telaAgendamento.add(nomeagenda);
+		nomeagenda.setColumns(10);
+		
+		JLabel lblEdendereo = new JLabel("Edendere\u00E7o");
+		lblEdendereo.setBounds(10, 49, 100, 14);
+		telaAgendamento.add(lblEdendereo);
+		
+		enderecoagenda = new JTextField();
+		enderecoagenda.setBounds(10, 74, 321, 20);
+		telaAgendamento.add(enderecoagenda);
+		enderecoagenda.setColumns(10);
+		
+		JLabel lblNumeroDaCasa = new JLabel("Numero da casa");
+		lblNumeroDaCasa.setBounds(10, 105, 87, 14);
+		telaAgendamento.add(lblNumeroDaCasa);
+		
+		ncasa = new JTextField();
+		ncasa.setBounds(10, 130, 321, 20);
+		telaAgendamento.add(ncasa);
+		ncasa.setColumns(10);
+		
+		
+		JLabel lblDataDeEstalao = new JLabel("Data da instala\u00E7\u00E3o");
+		lblDataDeEstalao.setBounds(10, 155, 112, 14);
+		telaAgendamento.add(lblDataDeEstalao);
+		
+		datestalacao = new JTextField();
+		datestalacao.setBounds(11, 180, 320, 20);
+		telaAgendamento.add(datestalacao);
+		datestalacao.setColumns(10);
+		
+		JButton btnAgendar = new JButton("Agendar");
+		btnAgendar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				sistema.Agenda(nomeagenda.getText(), enderecoagenda.getText(), ncasa.getText(), datestalacao.getText());
+				datestalacao.setText("");
+				nomeagenda.setText("");
+				enderecoagenda.setText("");
+				ncasa.setText("");
+				
+				
+				
+				telaAgendamento.setVisible(false);
+				telaIncial.setVisible(true);
+			}
+		});
+		btnAgendar.setBounds(325, 217, 89, 23);
+		telaAgendamento.add(btnAgendar);
+		
+		JButton btnVoltar_4 = new JButton("Voltar");
+		btnVoltar_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				telaAgendamento.setVisible(false);
+				telaIncial.setVisible(true);
+			}
+		});
+		btnVoltar_4.setBounds(226, 217, 89, 23);
+		telaAgendamento.add(btnVoltar_4);
+		
+		
+
+		
+		
+		
 	}
 }
-
